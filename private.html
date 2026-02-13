@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Private 🔒</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Playfair+Display&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Patrick Hand', cursive;
+    background: #111;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Hide sections by default */
+.hidden {
+    display: none;
+}
+
+/* Warning Box */
+.warning-box, .password-box {
+    background: #1e1e1e;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+    max-width: 500px;
+}
+
+button {
+    margin: 15px;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.yes-btn {
+    background: #ff6f91;
+    color: white;
+}
+
+.cancel-btn {
+    background: #555;
+    color: white;
+}
+
+input {
+    padding: 12px;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: none;
+    margin-top: 15px;
+}
+
+.error {
+    color: #ff6f91;
+    margin-top: 10px;
+}
+
+.shake {
+    animation: shake 0.4s;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-8px); }
+    50% { transform: translateX(8px); }
+    75% { transform: translateX(-8px); }
+    100% { transform: translateX(0); }
+}
+
+/* Private Content Styling */
+.content {
+    display: none;
+    background: #fdf6ec;
+    color: #333;
+    min-height: 100vh;
+    padding: 60px 20px;
+    font-family: 'Playfair Display', serif;
+}
+
+.content h1 {
+    text-align: center;
+    color: #d46a6a;
+    margin-bottom: 40px;
+}
+
+.letter {
+    background: white;
+    margin: 20px auto;
+    max-width: 700px;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.letter-header {
+    padding: 20px;
+    cursor: pointer;
+    background: #ffe0e6;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 1.3rem;
+}
+
+.letter-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.6s ease;
+    padding: 0 20px;
+}
+
+.letter-body.open {
+    padding: 20px;
+    max-height: 1000px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NSFW Warning -->
+<div class="warning-box" id="warningBox">
+    <h2>🔞 NSFW Content</h2>
+    <p>This page contains private and intimate stories meant only for you.</p>
+    <p>Are you sure you want to continue?</p>
+    <button class="yes-btn" onclick="showPassword()">Yes</button>
+    <button class="cancel-btn" onclick="goToCats()">Cancel</button>
+</div>
+
+<!-- Password Screen -->
+<div class="password-box hidden" id="passwordBox">
+    <h2>Enter Password 🔐</h2>
+    <input type="password" id="passwordInput" placeholder="Password">
+    <br>
+    <button class="yes-btn" onclick="checkPassword()">Unlock</button>
+    <p class="error" id="errorMessage"></p>
+</div>
+
+<!-- Private Content -->
+<div class="content" id="privateContent">
+    <h1>Our Private Letters 💌</h1>
+
+    <div class="letter">
+        <div class="letter-header">The Night I Knew 💭</div>
+        <div class="letter-body">
+            <p>Write your private story here. Keep it personal. Keep it intimate. This expands when clicked.</p>
+        </div>
+    </div>
+
+    <div class="letter">
+        <div class="letter-header">The Things I Never Said 🖤</div>
+        <div class="letter-body">
+            <p>Another private letter goes here. You can write freely and expand as long as needed.</p>
+        </div>
+    </div>
+
+    <div class="letter">
+        <div class="letter-header">When I Miss You The Most 🌙</div>
+        <div class="letter-body">
+            <p>Write another story here. Each section expands independently.</p>
+        </div>
+    </div>
+
+</div>
+
+<script>
+function goToCats() {
+    window.location.href = "https://www.google.com/search?q=cute+cats&tbm=isch";
+}
+
+function showPassword() {
+    document.getElementById("warningBox").classList.add("hidden");
+    document.getElementById("passwordBox").classList.remove("hidden");
+}
+
+function checkPassword() {
+    const correctPassword = "herpassword"; // CHANGE THIS
+    const input = document.getElementById("passwordInput").value;
+    const error = document.getElementById("errorMessage");
+    const box = document.getElementById("passwordBox");
+
+    if (input === correctPassword) {
+        document.body.style.background = "#fdf6ec";
+        box.style.display = "none";
+        document.getElementById("privateContent").style.display = "block";
+    } else {
+        error.textContent = "Wrong password.";
+        box.classList.add("shake");
+        setTimeout(() => box.classList.remove("shake"), 400);
+    }
+}
+
+// Expand letters
+document.querySelectorAll(".letter-header").forEach(header => {
+    header.addEventListener("click", () => {
+        const body = header.nextElementSibling;
+        body.classList.toggle("open");
+    });
+});
+</script>
+
+</body>
+</html>
