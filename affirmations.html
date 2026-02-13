@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Affirmations For You 🌸</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Patrick Hand', cursive;
+    background: linear-gradient(135deg, #ffeef2, #fff8f0, #fcefee);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    overflow-x: hidden;
+}
+
+h1 {
+    font-size: 2.8rem;
+    color: #d46a6a;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #888;
+    margin-bottom: 40px;
+}
+
+.back-link {
+    margin-bottom: 40px;
+    text-decoration: none;
+    color: #ff6f91;
+    font-size: 1.1rem;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.card {
+    perspective: 1000px;
+}
+
+.inner-card {
+    position: relative;
+    width: 100%;
+    height: 160px;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+
+.card.open .inner-card {
+    transform: rotateY(180deg);
+}
+
+.front, .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    backface-visibility: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.front {
+    background: #ffffff;
+    color: #ff6f91;
+    font-size: 1.2rem;
+}
+
+.back {
+    background: #ffe0e6;
+    transform: rotateY(180deg);
+    color: #444;
+    font-size: 1.1rem;
+}
+
+/* Floating sparkles */
+.sparkle {
+    position: fixed;
+    bottom: -20px;
+    font-size: 16px;
+    animation: floatUp 7s linear infinite;
+    opacity: 0.5;
+}
+
+@keyframes floatUp {
+    to {
+        transform: translateY(-110vh);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<a href="home.html" class="back-link">← Back to Memories</a>
+
+<h1>For You 🌸</h1>
+<p class="subtitle">Click a card when you need a reminder 💕</p>
+
+<div class="cards">
+
+<!-- Duplicate this block to add more affirmations -->
+
+<div class="card">
+    <div class="inner-card">
+        <div class="front">Open Me 💌</div>
+        <div class="back">I am so proud of the person you are becoming.</div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="inner-card">
+        <div class="front">Open Me 💌</div>
+        <div class="back">You make my world softer and brighter.</div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="inner-card">
+        <div class="front">Open Me 💌</div>
+        <div class="back">You are more than enough exactly as you are.</div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="inner-card">
+        <div class="front">Open Me 💌</div>
+        <div class="back">Your kindness is one of my favorite things about you.</div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="inner-card">
+        <div class="front">Open Me 💌</div>
+        <div class="back">Even on your worst days, I choose you.</div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="inner-card">
+        <div class="front">Open Me 💌</div>
+        <div class="back">You deserve love that feels safe and certain.</div>
+    </div>
+</div>
+
+</div>
+
+<script>
+// Flip on click
+document.querySelectorAll(".card").forEach(card => {
+    card.addEventListener("click", () => {
+        card.classList.toggle("open");
+    });
+});
+
+// Sparkle animation
+function createSparkle() {
+    const sparkle = document.createElement("div");
+    sparkle.classList.add("sparkle");
+    sparkle.innerHTML = "✨";
+    sparkle.style.left = Math.random() * 100 + "vw";
+    sparkle.style.animationDuration = (Math.random() * 3 + 4) + "s";
+    document.body.appendChild(sparkle);
+
+    setTimeout(() => {
+        sparkle.remove();
+    }, 7000);
+}
+
+setInterval(createSparkle, 1500);
+</script>
+
+</body>
+</html>
