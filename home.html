@@ -319,6 +319,37 @@ h1 {
     <div class="quote-card">I fall for you daily.</div>
 </div>
 
+<script>
+// Fade in polaroids on scroll
+const polaroids = document.querySelectorAll('.polaroid');
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+        }
+    });
+}, { threshold: 0.2 });
+
+polaroids.forEach(p => observer.observe(p));
+
+// Floating hearts generator
+function createHeart() {
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    heart.innerHTML = "💗";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
+}
+
+setInterval(createHeart, 1200);
+</script>
+    
 </body>
 </html>
   
