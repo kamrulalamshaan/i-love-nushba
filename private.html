@@ -13,12 +13,17 @@ body {
     font-family: 'Quicksand', sans-serif;
     background: #111;
     color: white;
+    text-align: center;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+body.locked {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    text-align: center;
-    padding: 20px;
+    overflow: hidden;
 }
 
 /* Hide sections by default */
@@ -87,6 +92,7 @@ input {
     min-height: 100vh;
     padding: 60px 20px;
     font-family: 'Playfair Display', serif;
+    overflow-y: auto;
 }
 
 .content h1 {
@@ -101,7 +107,7 @@ input {
     max-width: 700px;
     border-radius: 8px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    overflow: hidden;
+    overflow: visible;
 }
 
 .letter-header {
@@ -121,7 +127,8 @@ input {
 
 .letter-body.open {
     padding: 20px;
-    max-height: 1000px;
+    max-height: none;
+    overflow: visible;
 }
 
 .letter-body p {
@@ -205,7 +212,7 @@ input {
 </style>
 </head>
 
-<body>
+<body class="locked">
 
 <!-- NSFW Warning -->
 <div class="warning-box" id="warningBox">
@@ -242,14 +249,7 @@ input {
             <p>My dick is already hard for you as I write this, really.</p>
             <p>My hand will wander down your pants to feel your pussy lips. I love your pussy. I love how it looks. I love how it tastes. I love how your clit gets hard when my fingers rub against it, and that is exactly what I imagine doing while sucking on your tits.</p>
             <p>I’d kiss and lick my way down to your pussy and spread your legs apart. I would tease you with my tongue…</p>
-            <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
             <p>End of teaser</p>
-            <p></p>
             <p>Text Shaan if you want to subscribe to Shaan Erotica. Constructive feedback is welcome.</p>
         </div>
     </div>
@@ -279,6 +279,7 @@ function checkPassword() {
     const box = document.getElementById("passwordBox");
 
     if (input === correctPassword) {
+        document.body.classList.remove("locked");
         document.body.style.background = "#fdf6ec";
         box.style.display = "none";
         document.getElementById("privateContent").style.display = "block";
