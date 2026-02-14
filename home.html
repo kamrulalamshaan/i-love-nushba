@@ -346,18 +346,74 @@ h1 {
     }
 }
 
+/* Header */
+.header {
+    max-width: 1200px;
+    margin: 0 auto 50px auto;
+    padding: 30px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 250, 243, 0.8);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.header-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: #d46a6a;
+    font-weight: 700;
+    margin: 0;
+}
+
+.header-nav {
+    display: flex;
+    gap: 15px;
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        gap: 20px;
+        padding: 25px 20px;
+        text-align: center;
+    }
+    
+    .header-title {
+        font-size: 1.5rem;
+    }
+    
+    .header-nav {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .header-nav .nav-btn {
+        margin: 5px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-title {
+        font-size: 1.3rem;
+    }
+}
     
 </style>
 </head>
 
 <body>
 
-<h1>Wall of Memories</h1>
-
-<div class="nav">
-    <a href="affirmations.html" class="nav-btn">Affirmations 🌸</a>
-    <a href="private.html" class="nav-btn">Private 🔒</a>
+<div class="header">
+    <h2 class="header-title">Happy Valentine's Day, My Baby</h2>
+    <div class="header-nav">
+        <a href="affirmations.html" class="nav-btn">Affirmations 🌸</a>
+        <a href="private.html" class="nav-btn">Private 🔒</a>
+    </div>
 </div>
+
+<h1>Wall of Memories</h1>
 
 <div class="polaroid-wall">
 
