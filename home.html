@@ -195,6 +195,130 @@ h1 {
     }
 }
 
+/* Countdown Section */
+.countdown-section {
+    max-width: 1200px;
+    margin: 100px auto 120px auto;
+    background: #fffaf3;
+    padding: 60px;
+    border-radius: 8px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.countdown-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    color: #d46a6a;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.countdown-container {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.countdown-main {
+    margin-bottom: 20px;
+}
+
+.countdown-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    font-weight: 700;
+    color: #d46a6a;
+    line-height: 1;
+}
+
+.countdown-label {
+    font-family: 'Patrick Hand', cursive;
+    font-size: 1.3rem;
+    color: #666;
+    margin-top: 10px;
+}
+
+.countdown-detail {
+    font-family: 'Patrick Hand', cursive;
+    font-size: 1.1rem;
+    color: #666;
+}
+
+.timeline-section {
+    margin-top: 50px;
+}
+
+.timeline-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 1rem;
+    color: #555;
+}
+
+.timeline-bar {
+    position: relative;
+    height: 12px;
+    background: #f3e8da;
+    border-radius: 20px;
+    overflow: visible;
+    margin-bottom: 40px;
+}
+
+.timeline-progress {
+    height: 100%;
+    background: linear-gradient(90deg, #ff8fab, #ffb3c1);
+    border-radius: 20px;
+    transition: width 1s ease-out;
+    position: relative;
+}
+
+.timeline-marker {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.8rem;
+    transition: left 1s ease-out;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.timeline-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.stat-box {
+    text-align: center;
+    padding: 25px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: #d46a6a;
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+.stat-label {
+    font-family: 'Patrick Hand', cursive;
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.stat-hours {
+    font-family: 'Patrick Hand', cursive;
+    font-size: 0.9rem;
+    color: #888;
+}
+
 /* MOBILE RESPONSIVE */
 @media (max-width: 1024px) {
     .polaroid-wall {
@@ -243,6 +367,24 @@ h1 {
     
     .section-title {
         font-size: 2rem;
+    }
+    
+    .countdown-section {
+        padding: 50px 30px;
+        margin: 70px 30px 80px 30px;
+    }
+    
+    .countdown-title {
+        font-size: 2rem;
+    }
+    
+    .countdown-number {
+        font-size: 4rem;
+    }
+    
+    .timeline-stats {
+        grid-template-columns: 1fr;
+        gap: 20px;
     }
 }
 
@@ -299,6 +441,27 @@ h1 {
     .section-title {
         font-size: 1.6rem;
         margin: 60px 0 30px 0;
+    }
+    
+    .countdown-section {
+        padding: 40px 25px;
+        margin: 60px 20px;
+    }
+    
+    .countdown-title {
+        font-size: 1.8rem;
+    }
+    
+    .countdown-number {
+        font-size: 3.5rem;
+    }
+    
+    .countdown-label {
+        font-size: 1.1rem;
+    }
+    
+    .stat-number {
+        font-size: 2.5rem;
     }
 }
 
@@ -537,7 +700,6 @@ h1 {
     </div>
 </div>
 
-
 </div>
 
 <div class="letter-section">
@@ -583,11 +745,52 @@ h1 {
     <div class="quote-card">You're the reason Libya changed their flag after 2011.</div>
     <div class="quote-card">Every moment without you is a high opportunity cost.</div>
     <div class="quote-card">I want to be your private foodpanda at dartmouth.</div>
-    <div class="quote-card">তোমার রূপের ঝলক সূর্যের তেজকেও হার মানায়।</div>
-    <div class="quote-card">তোমার জন্য আমার হৃদয়ে বাকবাকুম পাখি ডাকে।</div>
-    <div class="quote-card">পৃথিবীর যত সুখ যত ভালোবাসা, সবই যে তোমায় দেব একটাই এই আশা।</div>
+    <div class="quote-card">তোমার রূপের ঝলক সূর্যের তেজকেও হার মানায়।</div>
+    <div class="quote-card">তোমার জন্য আমার হৃদয়ে বাকবাকুম পাখি ডাকে।</div>
+    <div class="quote-card">পৃথিবীর যত সুখ যত ভালোবাসা, সবই যে তোমায় দেব একটাই এই আশা।</div>
     <div class="quote-card">ছোট ছোট বালুকণা, বিন্দু বিন্দু জল, গড়ে তোলে মহাদেশ সাগর অতল।</div>
     <div class="quote-card"> তেমনি তোমার সাথে কাটানো প্রতিটি ক্ষণ, গড়ে তুলছে আমার হৃদয়ে এক ভালোবাসার সাগর।</div>
+</div>
+
+<!-- Countdown Section -->
+<div class="countdown-section">
+    <h2 class="countdown-title">Until We Meet Again 💕</h2>
+    
+    <div class="countdown-container">
+        <div class="countdown-main">
+            <div class="countdown-number" id="daysUntil">--</div>
+            <div class="countdown-label">Days Until March 20</div>
+        </div>
+        
+        <div class="countdown-detail">
+            <span id="hoursUntil">--</span> hours · <span id="minutesUntil">--</span> minutes
+        </div>
+    </div>
+    
+    <div class="timeline-section">
+        <div class="timeline-header">
+            <span class="timeline-date">Dec 26, 2025</span>
+            <span class="timeline-date">Mar 20, 2026</span>
+        </div>
+        
+        <div class="timeline-bar">
+            <div class="timeline-progress" id="timelineProgress"></div>
+            <div class="timeline-marker" id="timelineMarker">💗</div>
+        </div>
+        
+        <div class="timeline-stats">
+            <div class="stat-box">
+                <div class="stat-number" id="daysSince">--</div>
+                <div class="stat-label">Days Since We Last Met</div>
+                <div class="stat-hours" id="hoursSince">-- hours</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number" id="daysRemaining">--</div>
+                <div class="stat-label">Days Until We Meet</div>
+                <div class="stat-hours" id="hoursRemaining">-- hours</div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script>
@@ -624,6 +827,49 @@ function createHeart() {
 }
 
 setInterval(createHeart, 1200);
+
+// Countdown Timer
+function updateCountdown() {
+    const now = new Date();
+    const lastMet = new Date('2025-12-26T00:00:00');
+    const meetingDate = new Date('2026-03-20T00:00:00');
+    
+    // Calculate time since last meeting
+    const timeSince = now - lastMet;
+    const daysSince = Math.floor(timeSince / (1000 * 60 * 60 * 24));
+    const hoursSince = Math.floor(timeSince / (1000 * 60 * 60));
+    
+    // Calculate time until next meeting
+    const timeUntil = meetingDate - now;
+    const daysUntil = Math.floor(timeUntil / (1000 * 60 * 60 * 24));
+    const hoursUntil = Math.floor(timeUntil / (1000 * 60 * 60));
+    const minutesUntil = Math.floor((timeUntil % (1000 * 60 * 60)) / (1000 * 60));
+    
+    // Calculate progress percentage
+    const totalTime = meetingDate - lastMet;
+    const progressPercent = ((now - lastMet) / totalTime) * 100;
+    
+    // Update DOM elements
+    document.getElementById('daysUntil').textContent = daysUntil;
+    document.getElementById('hoursUntil').textContent = hoursUntil;
+    document.getElementById('minutesUntil').textContent = minutesUntil;
+    
+    document.getElementById('daysSince').textContent = daysSince;
+    document.getElementById('hoursSince').textContent = hoursSince.toLocaleString() + ' hours';
+    
+    document.getElementById('daysRemaining').textContent = daysUntil;
+    document.getElementById('hoursRemaining').textContent = hoursUntil.toLocaleString() + ' hours';
+    
+    // Update progress bar
+    const progressBar = document.getElementById('timelineProgress');
+    const marker = document.getElementById('timelineMarker');
+    progressBar.style.width = progressPercent + '%';
+    marker.style.left = progressPercent + '%';
+}
+
+// Update countdown immediately and then every minute
+updateCountdown();
+setInterval(updateCountdown, 60000); // Update every minute
 </script>
 
 <div class="footer">
@@ -635,8 +881,3 @@ setInterval(createHeart, 1200);
     
 </body>
 </html>
-  
-
-
-
-  
