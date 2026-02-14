@@ -58,11 +58,14 @@ h1 {
 
 
 .polaroid-wall {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto 100px auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: 50px;
+    justify-items: center;
 }
+
 
 .polaroid {
     width: 230px;
