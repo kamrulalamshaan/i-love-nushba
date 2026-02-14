@@ -195,15 +195,6 @@ function createSparkle() {
         sparkle.remove();
     }, 7000);
 }
-
-.card:not(.open) .inner-card {
-    animation: float 5s ease-in-out infinite;
-}
-
-@keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-6px); }
-}
     
 setInterval(createSparkle, 1500);
 </script>
