@@ -116,72 +116,130 @@ button {
 <script>
 const noBtn = document.getElementById("noBtn");
 const yesBtn = document.getElementById("yesBtn");
+const container = document.querySelector(".container");
+
+let isMoving = false;
 
 // Redirect on Yes
 yesBtn.addEventListener("click", () => {
     window.location.href = "home.html";
 });
 
+// Prevent clicking the No button
+noBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+});
+
+// Check if cursor is directly on the button
+function isCursorOnButton(cursorX, cursorY, btnRect) {
+    return cursorX >= btnRect.left && 
+           cursorX <= btnRect.right && 
+           cursorY >= btnRect.top && 
+           cursorY <= btnRect.bottom;
+}
+
 // Make No button run away from cursor
-noBtn.addEventListener("mousemove", (e) => {
-    const btn = e.target;
-    const btnRect = btn.getBoundingClientRect();
-    const container = document.querySelector(".container");
+function moveButtonAway(cursorX, cursorY) {
+    if (isMoving) return; // Prevent jittery movement
+    
+    const btnRect = noBtn.getBoundingClientRect();
     const containerRect = container.getBoundingClientRect();
     
-    // Get cursor position relative to button
-    const cursorX = e.clientX;
-    const cursorY = e.clientY;
     const btnCenterX = btnRect.left + btnRect.width / 2;
     const btnCenterY = btnRect.top + btnRect.height / 2;
     
-    // Calculate distance and direction from cursor
+    // Check if cursor is directly on the button
+    const onButton = isCursorOnButton(cursorX, cursorY, btnRect);
+    
+    // Calculate distance from cursor to button center
     const deltaX = btnCenterX - cursorX;
     const deltaY = btnCenterY - cursorY;
     const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
     
-    // If cursor is close, move button away
-    if (distance < 100) {
+    // If cursor is ON the button, move it far away immediately
+    if (onButton) {
+        isMoving = true;
+        
+        // Move to a random corner far from cursor
+        const corners = [
+            { left: 30, top: 30 }, // top-left
+            { left: containerRect.width - btnRect.width - 30, top: 30 }, // top-right
+            { left: 30, top: containerRect.height - btnRect.height - 30 }, // bottom-left
+            { left: containerRect.width - btnRect.width - 30, top: containerRect.height - btnRect.height - 30 } // bottom-right
+        ];
+        
+        // Find the corner furthest from cursor
+        let furthestCorner = corners[0];
+        let maxDist = 0;
+        
+        corners.forEach(corner => {
+            const cornerX = containerRect.left + corner.left + btnRect.width / 2;
+            const cornerY = containerRect.top + corner.top + btnRect.height / 2;
+            const dist = Math.sqrt(Math.pow(cornerX - cursorX, 2) + Math.pow(cornerY - cursorY, 2));
+            if (dist > maxDist) {
+                maxDist = dist;
+                furthestCorner = corner;
+            }
+        });
+        
+        noBtn.style.position = "absolute";
+        noBtn.style.left = furthestCorner.left + "px";
+        noBtn.style.top = furthestCorner.top + "px";
+        noBtn.style.transition = "all 0.15s ease-out"; // Fast movement when on button
+        
+        setTimeout(() => {
+            isMoving = false;
+        }, 200);
+        
+    } else if (distance < 150) {
+        // Normal movement when cursor is nearby but not on button
+        isMoving = true;
+        
         const angle = Math.atan2(deltaY, deltaX);
-        const moveDistance = 150;
+        const moveDistance = 200;
         
-        // Calculate new position
-        let newX = btnCenterX + Math.cos(angle) * moveDistance;
-        let newY = btnCenterY + Math.sin(angle) * moveDistance;
+        // Calculate new position (move away from cursor)
+        let newLeft = btnRect.left - containerRect.left + Math.cos(angle) * moveDistance;
+        let newTop = btnRect.top - containerRect.top + Math.sin(angle) * moveDistance;
         
-        // Keep button within container bounds
-        const maxX = containerRect.width - btnRect.width / 2;
-        const minX = btnRect.width / 2;
-        const maxY = containerRect.height - btnRect.height / 2;
-        const minY = btnRect.height / 2;
+        // Keep button within container bounds with padding
+        const padding = 30;
+        const maxLeft = containerRect.width - btnRect.width - padding;
+        const maxTop = containerRect.height - btnRect.height - padding;
         
-        newX = Math.max(minX, Math.min(maxX, newX));
-        newY = Math.max(minY, Math.min(maxY, newY));
+        // Check if button would hit bottom or top boundary
+        const wouldHitBottom = newTop > maxTop;
+        const wouldHitTop = newTop < padding;
         
-        // Convert to position relative to container
-        const relativeX = newX - containerRect.left - btnRect.width / 2;
-        const relativeY = newY - containerRect.top - btnRect.height / 2;
+        // If hitting vertical boundaries, teleport to center
+        if (wouldHitBottom || wouldHitTop) {
+            newLeft = (containerRect.width - btnRect.width) / 2;
+            newTop = (containerRect.height - btnRect.height) / 2;
+        } else {
+            newLeft = Math.max(padding, Math.min(maxLeft, newLeft));
+            newTop = Math.max(padding, Math.min(maxTop, newTop));
+        }
         
-        btn.style.position = "absolute";
-        btn.style.left = relativeX + "px";
-        btn.style.top = relativeY + "px";
+        noBtn.style.position = "absolute";
+        noBtn.style.left = newLeft + "px";
+        noBtn.style.top = newTop + "px";
+        noBtn.style.transition = "all 0.3s ease-out";
+        
+        // Re-enable movement after animation completes
+        setTimeout(() => {
+            isMoving = false;
+        }, 350);
     }
-});
+}
 
-// Also trigger on hover for easier interaction
-noBtn.addEventListener("mouseenter", () => {
-    const container = document.querySelector(".container");
-    const containerRect = container.getBoundingClientRect();
-    
-    const maxX = containerRect.width - noBtn.offsetWidth - 20;
-    const maxY = containerRect.height - noBtn.offsetHeight - 20;
-    
-    const randomX = Math.floor(Math.random() * maxX) + 10;
-    const randomY = Math.floor(Math.random() * maxY) + 10;
-    
-    noBtn.style.position = "absolute";
-    noBtn.style.left = randomX + "px";
-    noBtn.style.top = randomY + "px";
+// Track mouse movement with throttling
+let lastMove = 0;
+document.addEventListener("mousemove", (e) => {
+    const now = Date.now();
+    if (now - lastMove > 50) { // Throttle to once per 50ms
+        lastMove = now;
+        moveButtonAway(e.clientX, e.clientY);
+    }
 });
 </script>
 </body>
