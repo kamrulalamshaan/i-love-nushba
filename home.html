@@ -14,7 +14,7 @@ body {
     background-image: radial-gradient(#f3e8da 1px, transparent 1px);
     background-size: 20px 20px;
     font-family: 'Patrick Hand', cursive;
-    padding: 40px;
+    padding: 20px;
     overflow-x: hidden;
 }
 
@@ -35,7 +35,7 @@ h1 {
 .nav-btn {
     display: inline-block;
     padding: 14px 30px;
-    margin: 0 15px;
+    margin: 10px 15px;
     border-radius: 30px;
     text-decoration: none;
     font-family: 'Playfair Display', serif;
@@ -56,7 +56,6 @@ h1 {
     transform: scale(0.97);
 }
 
-
 .polaroid-wall {
     max-width: 1200px;
     margin: 0 auto 100px auto;
@@ -64,11 +63,12 @@ h1 {
     grid-template-columns: repeat(5, 1fr);
     gap: 40px;
     justify-items: center;
+    padding: 0 20px;
 }
 
-
 .polaroid {
-    width: 230px;
+    width: 100%;
+    max-width: 230px;
     background: white;
     padding: 15px 15px 50px 15px;
     box-shadow: 0 20px 35px rgba(0,0,0,0.18);
@@ -102,7 +102,6 @@ h1 {
     color: #555;
 }
 
-/* Tape effect */
 .polaroid::before {
     content: "";
     width: 80px;
@@ -114,9 +113,8 @@ h1 {
     transform: translateX(-50%) rotate(-5deg);
 }
 
-/* Letter styling */
 .letter-section {
-    max-width: 1200px;   /* MATCHES polaroid wall */
+    max-width: 1200px;
     margin: 0 auto 120px auto;
     background: #fffaf3;
     padding: 60px;
@@ -145,13 +143,11 @@ h1 {
 
 .letter-section p {
     font-family: 'Patrick Hand', cursive;
-    font-size: 1.5rem;      /* makes it readable */
-    color: #4a3f3f;          /* softer than pure black */
+    font-size: 1.5rem;
+    color: #4a3f3f;
     margin-bottom: 20px;
 }
 
-
-/* Quotes */
 .quotes {
     margin-top: 80px;
     max-width: 1200px;
@@ -160,6 +156,7 @@ h1 {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 25px;
+    padding: 0 20px;
 }
 
 .quote-card {
@@ -175,7 +172,6 @@ h1 {
     transform: translateY(-8px) scale(1.03);
 }
 
-/* Floating hearts */
 .heart {
     position: fixed;
     bottom: -20px;
@@ -196,6 +192,113 @@ h1 {
     to {
         transform: translateY(-110vh);
         opacity: 0;
+    }
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 1024px) {
+    .polaroid-wall {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+    
+    .quotes {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.2rem;
+    }
+    
+    .nav-btn {
+        padding: 12px 24px;
+        font-size: 1rem;
+        margin: 5px 10px;
+    }
+    
+    .polaroid-wall {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+    
+    .letter-section {
+        padding: 40px 30px;
+    }
+    
+    .letter-section h2 {
+        font-size: 2rem;
+    }
+    
+    .letter-section p {
+        font-size: 1.3rem;
+    }
+    
+    .quotes {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 15px;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    .nav-btn {
+        display: block;
+        margin: 10px auto;
+        max-width: 200px;
+    }
+    
+    .polaroid-wall {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .polaroid {
+        max-width: 280px;
+    }
+    
+    .letter-section {
+        padding: 30px 20px;
+    }
+    
+    .letter-section::before {
+        left: 15px;
+    }
+    
+    .letter-section h2 {
+        font-size: 1.6rem;
+    }
+    
+    .letter-section p {
+        font-size: 1.2rem;
+    }
+    
+    .quotes {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .quote-card {
+        padding: 20px;
+        font-size: 1rem;
+    }
+    
+    .section-title {
+        font-size: 1.6rem;
+        margin: 60px 0 30px 0;
     }
 }
 </style>
