@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Affirmations For My Baby</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Quicksand:wght@400;600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
 
 <style>
 body {
@@ -24,6 +24,8 @@ h1 {
     font-size: 2.8rem;
     color: #d46a6a;
     margin-bottom: 10px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
 }
 
 .subtitle {
@@ -32,10 +34,27 @@ h1 {
 }
 
 .back-link {
+    display: inline-block;
+    padding: 14px 30px;
     margin-bottom: 40px;
+    border-radius: 30px;
     text-decoration: none;
-    color: #ff6f91;
+    font-family: 'Playfair Display', serif;
     font-size: 1.1rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, #ffcad4, #ffc2d1);
+    color: #8c3a4a;
+    box-shadow: 0 10px 20px rgba(255, 105, 135, 0.25);
+    transition: all 0.3s ease;
+}
+
+.back-link:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 30px rgba(255, 105, 135, 0.35);
+}
+
+.back-link:active {
+    transform: scale(0.97);
 }
 
 .cards {
