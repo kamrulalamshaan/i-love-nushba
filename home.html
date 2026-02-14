@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Our Scrapbook 💕</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Playfair+Display&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
 
 <style>
 body {
@@ -20,27 +20,41 @@ body {
 
 h1 {
     text-align: center;
-    font-size: 3rem;
+    font-size: 3.2rem;
+    font-family: 'Playfair Display', serif;
     color: #d46a6a;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
 }
 
 .nav {
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 70px;
 }
 
-.nav a {
+.nav-btn {
+    display: inline-block;
+    padding: 14px 30px;
+    margin: 0 15px;
+    border-radius: 30px;
     text-decoration: none;
-    margin: 0 20px;
-    font-size: 1.2rem;
-    color: #ff6f91;
-    transition: 0.3s;
+    font-size: 1.1rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, #ffcad4, #ffc2d1);
+    color: #8c3a4a;
+    box-shadow: 0 10px 20px rgba(255, 105, 135, 0.25);
+    transition: all 0.3s ease;
 }
 
-.nav a:hover {
-    color: #d46a6a;
+.nav-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 30px rgba(255, 105, 135, 0.35);
 }
+
+.nav-btn:active {
+    transform: scale(0.97);
+}
+
 
 .polaroid-wall {
     display: flex;
@@ -119,7 +133,7 @@ h1 {
 }
 
 .letter-section h2 {
-    font-family: 'Patrick Hand', cursive;
+    font-family: 'Quicksand', sans-serif;
     color: #d46a6a;
 }
 
@@ -167,8 +181,8 @@ h1 {
 <h1>Wall of Memories</h1>
 
 <div class="nav">
-    <a href="affirmations.html">Affirmations 🌸</a>
-    <a href="private.html">Private 🔒</a>
+    <a href="affirmations.html" class="nav-btn">Affirmations 🌸</a>
+    <a href="private.html" class="nav-btn">Private 🔒</a>
 </div>
 
 <div class="polaroid-wall">
