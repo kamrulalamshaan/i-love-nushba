@@ -704,7 +704,7 @@ h1 {
     <img src="images/val.jpeg" alt="Memory">
     <div class="caption">
         <strong>February 15, 2026</strong><br>
-        The day the best girlfriend (mine, yes) sent me a pink flower bouquet for Valentine's Day
+        Happy Valentine's Day, my love
     </div>
 </div>
 
@@ -838,24 +838,30 @@ setInterval(createHeart, 1200);
 
 // Countdown Timer
 function updateCountdown() {
+    // Get current time in Dhaka timezone (GMT+6)
     const now = new Date();
-    const lastMet = new Date('2025-12-26T00:00:00');
-    const meetingDate = new Date('2026-03-20T00:00:00');
+    const dhakaOffset = 6 * 60; // Dhaka is GMT+6 (360 minutes)
+    const localOffset = now.getTimezoneOffset(); // Local offset in minutes (negative for east of GMT)
+    const dhakaNow = new Date(now.getTime() + (dhakaOffset + localOffset) * 60 * 1000);
+    
+    // Set dates in Dhaka timezone
+    const lastMet = new Date('2025-12-26T00:00:00+06:00');
+    const meetingDate = new Date('2026-03-20T11:00:00+06:00'); // March 20, 2026 at 11 AM Dhaka time
     
     // Calculate time since last meeting
-    const timeSince = now - lastMet;
+    const timeSince = dhakaNow - lastMet;
     const daysSince = Math.floor(timeSince / (1000 * 60 * 60 * 24));
     const hoursSince = Math.floor(timeSince / (1000 * 60 * 60));
     
     // Calculate time until next meeting
-    const timeUntil = meetingDate - now;
+    const timeUntil = meetingDate - dhakaNow;
     const daysUntil = Math.floor(timeUntil / (1000 * 60 * 60 * 24));
     const hoursUntil = Math.floor(timeUntil / (1000 * 60 * 60));
     const minutesUntil = Math.floor((timeUntil % (1000 * 60 * 60)) / (1000 * 60));
     
     // Calculate progress percentage
     const totalTime = meetingDate - lastMet;
-    const progressPercent = ((now - lastMet) / totalTime) * 100;
+    const progressPercent = ((dhakaNow - lastMet) / totalTime) * 100;
     
     // Update DOM elements
     document.getElementById('daysUntil').textContent = daysUntil;
